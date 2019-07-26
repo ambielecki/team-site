@@ -18,6 +18,7 @@ class CreateEventsTable extends Migration
             $table->bigInteger('site_id')->unsigned();
             $table->text('event_type');
             $table->dateTime('start_time');
+            $table->boolean('has_attendance');
             $table->json('data');
             $table->timestamps();
 

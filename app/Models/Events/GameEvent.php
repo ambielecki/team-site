@@ -8,6 +8,8 @@ class GameEvent extends Event {
     const TYPE = 'game';
     const LABEL = 'Game';
 
+    protected $requires_response = true;
+
     protected static function boot(): void {
         parent::boot();
         static::addGlobalScope(new GameEventScope());
