@@ -12,8 +12,18 @@ class SitesUsersTableSeeder extends Seeder {
      */
     public function run() {
         $site = Site::get()->first();
-        $user = User::get()->first();
+        $user = User::query()
+            ->where('email', 'ambielecki@yahoo.com')
+            ->get()
+            ->first();
 
         $site->users()->attach($user->id, ['is_site_admin' => 1]);
+
+        $user = User::query()
+            ->where('email', 'missitnoonan@gmail.com')
+            ->get()
+            ->first();
+
+        $site->users()->attach($user->id, ['is_site_admin' => 0]);
     }
 }

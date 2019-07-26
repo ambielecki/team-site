@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\Models\Site;
+use App\User;
 
 class SitesTableSeeder extends Seeder {
     /**
@@ -10,8 +11,12 @@ class SitesTableSeeder extends Seeder {
      * @return void
      */
     public function run() {
+        $user = User::query()
+            ->where('email', 'ambielecki@yahoo.com')
+            ->first();
+
         Site::create([
-            'user_id' => '1',
+            'user_id' => $user->id ?? 2,
             'team_name' => 'Red Sox',
             'division_name' => 'AAA',
             'league_name' => 'Stoneham LL',
