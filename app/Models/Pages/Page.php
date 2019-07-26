@@ -1,10 +1,9 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Pages;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Posts extends Model
-{
+class Page extends Model {
     //
 }
