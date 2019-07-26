@@ -19,6 +19,7 @@ class CreateImagesTable extends Migration
             $table->text('path');
             $table->text('title');
             $table->text('description');
+            $table->boolean('is_public')->default(0);
             $table->boolean('is_hero')->default(0);
             $table->boolean('has_sm')->default(0);
             $table->boolean('has_m')->default(0);

@@ -2,6 +2,10 @@
 
 namespace App;
 
+use App\Models\Player;
+use App\Models\Site;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -37,4 +41,16 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'is_admin' => 'boolean'
     ];
+
+    public function players(): BelongsToMany {
+        return $this->belongsToMany(Player::class)->withTimestamps();
+    }
+
+    public function ownedSites(): HasMany {
+        return $this->hasMany(Site::class);
+    }
+
+    public function sites(): BelongsToMany {
+        return $this->belongsToMany(Site::class)->withTimestamps();
+    }
 }

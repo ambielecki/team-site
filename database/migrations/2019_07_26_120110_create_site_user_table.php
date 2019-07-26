@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePlayersUsersTable extends Migration
+class CreateSiteUserTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,14 @@ class CreatePlayersUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('players_users', function (Blueprint $table) {
+        Schema::create('site_user', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('player_id')->unsigned();
+            $table->bigInteger('site_id')->unsigned();
             $table->bigInteger('user_id')->unsigned();
-            $table->boolean('is_primary_contact')->default(0);
-            $table->boolean('is_receiving_emails')->default(0);
+            $table->boolean('is_site_admin')->default(0);
             $table->timestamps();
 
-            $table->foreign('player_id')->references('id')->on('players');
+            $table->foreign('site_id')->references('id')->on('sites');
             $table->foreign('user_id')->references('id')->on('users');
         });
     }
@@ -33,6 +32,6 @@ class CreatePlayersUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('players_users');
+        Schema::dropIfExists('sites_users');
     }
 }
